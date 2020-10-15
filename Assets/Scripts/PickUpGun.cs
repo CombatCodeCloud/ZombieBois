@@ -7,14 +7,11 @@ public class PickUpGun : MonoBehaviour {
 
 	public GameObject pickupText;
 	public GameObject fakeGun;
-	 public GameObject realGun;
-	static bool gunActive;
+	public GameObject realGun;
+	public static GameObject currentGun;
+	public static bool gunActive;
 	public static string gunName;
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
+
 	// Update is called once per frame
 	void Update ()
 	{
@@ -22,9 +19,14 @@ public class PickUpGun : MonoBehaviour {
 
 	}
 	void OnMouseOver() { 
-		if (theDistance <= 4) {
+		if (theDistance <= 3) {
 			pickupText.SetActive(true);
 		}
+		else
+        {
+			pickupText.SetActive(false);
+        }
+
 		if (Input.GetButtonDown("Interact")) {
 			if (theDistance <= 2) {
 				TakeGun();
@@ -36,16 +38,20 @@ public class PickUpGun : MonoBehaviour {
 		pickupText.SetActive(false);
 	}
 
-	void TakeGun() { 
-		if(gunActive)
+	void TakeGun() {
+		if (gunActive)
 		{
 			Debug.Log("work here");
+			currentGun.SetActive(false);
+
 		}
 		transform.position = new Vector3(0, -1000, 0);
 		pickupText.SetActive(false);
 		fakeGun.SetActive(false);
 		realGun.SetActive(true);
 		gunActive = true;
+		currentGun = realGun;
+
 		gunName = realGun.name;
 		Debug.Log(gunName);
 	}

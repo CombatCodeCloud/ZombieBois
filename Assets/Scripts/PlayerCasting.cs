@@ -6,12 +6,6 @@ public class PlayerCasting : MonoBehaviour
 	public static float distanceFromTarget;
 	float toTarget;
 
-	// Use this for initialization
-	void Start()
-	{
-
-	}
-
 	// Update is called once per frame
 	void Update()
 	{
