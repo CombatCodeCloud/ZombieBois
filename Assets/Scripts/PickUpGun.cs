@@ -41,8 +41,8 @@ public class PickUpGun : MonoBehaviour {
 	void TakeGun() {
 		if (gunActive)
 		{
-			Debug.Log("work here");
 			currentGun.SetActive(false);
+			GunPlay.timesFired = 0;
 
 		}
 		transform.position = new Vector3(0, -1000, 0);
