@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -26,35 +27,38 @@ public class GunPlay : MonoBehaviour {
 		switch(gunType)
 		{
 		case "FiveSeven":
-			damageAmount = 27;
-			allowedRange = 15;
+			damageAmount = 30;
+			allowedRange = 20;
 			firerate = 0.2f;
 			clipSize = 10;
 			reloadTime = 2.2f;
-
-			if (timesFired == clipSize)
-			{
-				reloading = true ;
-				timesFired = 0;
-
-			}
+			ReloadingCheck();
 			break;
 
 
-		case "Model70":
-			damageAmount = 90;
+		case "ScoutG08":
+			damageAmount = 70;
 			allowedRange = 50;
 			firerate = 1f;
-			clipSize = 5;
+			clipSize = 10;
 			reloadTime = 3.7f;
-			if (timesFired == clipSize)
-			{
-				reloading = true;
-				timesFired = 0;
+			ReloadingCheck();
+			break;
+
+		case "M2Dual":			
+			allowedRange = 7;
+			firerate = 0.1f;
+			clipSize = 2;
+			reloadTime = 1.1f;
+			ReloadingCheck();
+			if(targetDistance <= 5)
+            {
+				damageAmount = 100;
 			}
-
-
-
+			else
+            {
+				damageAmount = 90;
+			}
 			break;
 
 		default:
@@ -65,7 +69,14 @@ public class GunPlay : MonoBehaviour {
 		}
 
 
-
+		void ReloadingCheck()
+        {
+			if (timesFired == clipSize)
+			{
+				reloading = true;
+				timesFired = 0;
+			}
+		}
 
 		if (Input.GetButtonDown("Reload"))
         {
