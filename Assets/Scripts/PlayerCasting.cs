@@ -1,20 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 public class PlayerCasting : MonoBehaviour
 {
-	public static float distanceFromTarget;
-	float toTarget;
+    public static float distanceFromTarget;
+    float toTarget;
 
-	// Update is called once per frame
-	void Update()
-	{
+    // Update is called once per frame
+    void Update()
+    {
 
-		RaycastHit hit;
-		if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit))
-		{
-			toTarget = hit.distance;
-			distanceFromTarget = toTarget;
-		}
-	}
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit))
+        {
+            toTarget = hit.distance;
+            distanceFromTarget = toTarget;
+        }
+    }
 }
