@@ -17,10 +17,10 @@ public class GunPlay : MonoBehaviour
     public bool reloading;
     public static int clipSize, timesFired;
 
+
     // Update is called once per frame
     void Update()
     {
-
         gunType = PickUpGun.gunName;
         switch (gunType)
         {
@@ -30,7 +30,6 @@ public class GunPlay : MonoBehaviour
                 firerate = 0.2f;
                 clipSize = 10;
                 reloadTime = 2.2f;
-                ReloadingCheck();
                 break;
 
 
@@ -40,7 +39,6 @@ public class GunPlay : MonoBehaviour
                 firerate = 1f;
                 clipSize = 10;
                 reloadTime = 3.7f;
-                ReloadingCheck();
                 break;
 
             case "M2Dual":
@@ -49,7 +47,6 @@ public class GunPlay : MonoBehaviour
                 firerate = 0.1f;
                 clipSize = 2;
                 reloadTime = 1.1f;
-                ReloadingCheck();
                 break;
 
             default:
@@ -59,6 +56,10 @@ public class GunPlay : MonoBehaviour
                 break;
         }
 
+        if(PickUpGun.gunActive)
+        {
+            ReloadingCheck();
+        }
 
         void ReloadingCheck()
         {

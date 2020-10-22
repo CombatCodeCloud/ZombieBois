@@ -56,7 +56,6 @@ public class PickUpGun : MonoBehaviour
         realGun.SetActive(true);
         gunActive = true;
         currentGun = realGun;
-
         gunName = realGun.name;
         Debug.Log(gunName);
     }

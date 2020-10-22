@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerReady : MonoBehaviour
 {
     public static bool gunActive;
-    public GameObject gunText;
+    public GameObject gunObj;
 
     // Update is called once per frame
     void Update()
@@ -14,7 +14,8 @@ public class PlayerReady : MonoBehaviour
         gunActive = PickUpGun.gunActive;
         if(gunActive)
         {
-            gunText.SetActive(false);
+            gunObj.SetActive(false);
+            EnemyScript.navReady = true;
             Destroy(gameObject);
         }
     }

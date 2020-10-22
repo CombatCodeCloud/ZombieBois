@@ -9,7 +9,7 @@ public class EnemyScript : MonoBehaviour
     Transform destination = null;
 
     NavMeshAgent navMeshAgent;
-    private bool navReady;
+    public static bool navReady;
     public int enemyHealth = 100;
 
     void Start ()
@@ -20,10 +20,7 @@ public class EnemyScript : MonoBehaviour
         {
             Debug.LogError("NavMeshAgent not detected on" + gameObject.name);
         }
-        else
-        {
-            navReady = true;
-        }
+
     }
     // Update is called once per frame
     void Update()
@@ -31,7 +28,6 @@ public class EnemyScript : MonoBehaviour
         if (enemyHealth <= 0)
         {
             Destroy(gameObject);
-            navReady = false;
         }
 
         if(destination != null && navReady)
